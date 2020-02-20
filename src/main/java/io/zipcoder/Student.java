@@ -14,6 +14,14 @@ public class Student {
             this.examScores.add(testScores[i]);
         }
     }
+    public Student(String firstName){
+        this.firstName = firstName;
+    }
+
+    public Student(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -24,6 +32,7 @@ public class Student {
     }
 
     public String getLastName() {
+
         return lastName;
     }
 
@@ -33,11 +42,13 @@ public class Student {
 
 
     public Integer getNumberOfExamsTaken(){
-        return examScores.size();
+
+        return this.examScores.size();
     }
 
-    public void setExamScores(ArrayList<Double> examScores) {
-        this.examScores = examScores;
+    public void setExamScore(int examNumber, double newScore){
+     int index = examNumber - 1;
+     this.examScores.add(index, newScore);
     }
 
     public String getExamScores(){
@@ -50,10 +61,11 @@ public class Student {
     }
 
     public void addExamScore(double examScore){
+
         this.examScores.add(examScore);
     }
 
-    public void setExamScore(int )
+
 
 
 }
