@@ -37,8 +37,32 @@ public class StudentTest {
 
         //When
         int expected = 4;
-        int actual = getNumberOfExamsTaken
+        int actual = student.getNumberOfExamsTaken();
 
+        //then
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void testGetExamScores(){
+        //Given
+        Student student = new Student("Khalil", "Crumpler", new Double[] {100.0, 95.0, 96.0, 100.0});
+
+        //when
+        String output = student.getExamScores();
+
+        //then
+        System.out.println(output);
+    }
+    @Test
+    public void testAddExamScore(){
+        //Given
+        Student student = new Student("Khalil", "Crumpler", new Double[] {100.0, 95.0, 96.0, 100.0});
+
+        //when
+        student.addExamScore(93.0);
+        String output = student.getExamScores();
+        //then
+        System.out.println(output);
     }
 
 

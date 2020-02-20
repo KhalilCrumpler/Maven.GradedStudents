@@ -23,16 +23,16 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getFirstName() {
+        return firstName;
+    }
 
+
+    public String getLastName() {
         return lastName;
     }
 
@@ -42,7 +42,6 @@ public class Student {
 
 
     public Integer getNumberOfExamsTaken(){
-
         return this.examScores.size();
     }
 
@@ -55,13 +54,13 @@ public class Student {
         String newString = "";
         int counter = 1;
         for(int i = 0; i < examScores.size(); i++){
-            newString += "Exam " + counter + examScores.get(i) + "\n";
+            newString += "Exam " + counter + ": " + Math.round(examScores.get(i)) + "\n";
+            counter++;
         }
         return newString;
     }
 
     public void addExamScore(double examScore){
-
         this.examScores.add(examScore);
     }
 
