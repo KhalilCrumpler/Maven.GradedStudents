@@ -64,6 +64,14 @@ public class Student {
         this.examScores.add(examScore);
     }
 
+    public Double getAverageExamScore(){
+        int len = examScores.size();
+        Double sum = 0.0;
+        for( double a : examScores){
+            sum += a;
+        }
+        return sum/len;
+    }
 
 
 

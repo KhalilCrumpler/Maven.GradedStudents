@@ -3,6 +3,9 @@ package io.zipcoder;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class StudentTest {
     @Test
     public void testGetFirstName() {
@@ -51,7 +54,9 @@ public class StudentTest {
         String output = student.getExamScores();
 
         //then
+
         System.out.println(output);
+
     }
     @Test
     public void testAddExamScore(){
@@ -63,6 +68,31 @@ public class StudentTest {
         String output = student.getExamScores();
         //then
         System.out.println(output);
+    }
+
+    @Test
+    public void testSetExamScore(){
+        //Given
+        Student student = new Student("Khalil", "Crumpler", new Double[] {125.0});
+
+        //when
+        student.examScores.remove(0);
+        student.setExamScore(1, 150.0);
+        String output = student.getExamScores();
+
+        //then
+        System.out.println(output);
+    }
+    @Test
+    public void testGetAverageExamScore(){
+        //Given
+        Student student = new Student("Khalil", "Crumpler", new Double[] {100.0, 95.0, 96.0, 100.0});
+
+        //when
+        Double average = student.getAverageExamScore();
+
+        //then
+        System.out.println(average);
     }
 
 
