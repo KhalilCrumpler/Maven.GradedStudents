@@ -68,6 +68,7 @@ public class StudentTest {
         String output = student.getExamScores();
         //then
         System.out.println(output);
+
     }
 
     @Test
@@ -94,7 +95,17 @@ public class StudentTest {
         //then
         System.out.println(average);
     }
+    @Test
+    public void testToString(){
+        //given
+        Student student = new Student("Khalil", "Crumpler", new Double[] {100.0, 95.0, 96.0, 100.0});
 
+        //when
+        String output = student.toString();
+
+        //then
+        System.out.println(output);
+    }
 
 
 }
