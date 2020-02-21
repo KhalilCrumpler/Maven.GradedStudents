@@ -60,6 +60,7 @@ public class Student {
         return newString;
     }
 
+
     public void addExamScore(double examScore){
         this.examScores.add(examScore);
     }

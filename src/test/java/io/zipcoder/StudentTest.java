@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class StudentTest {
+    Logger logger = Logger.getLogger(StudentTest.class.getName());
     @Test
     public void testGetFirstName() {
         // Given
@@ -55,7 +56,7 @@ public class StudentTest {
 
         //then
 
-        System.out.println(output);
+        logger.log(Level.INFO, output);
 
     }
     @Test
@@ -67,7 +68,7 @@ public class StudentTest {
         student.addExamScore(93.0);
         String output = student.getExamScores();
         //then
-        System.out.println(output);
+        logger.log(Level.INFO, output);
 
     }
 
@@ -82,7 +83,7 @@ public class StudentTest {
         String output = student.getExamScores();
 
         //then
-        System.out.println(output);
+        logger.log(Level.INFO, output);
     }
     @Test
     public void testGetAverageExamScore(){
@@ -93,7 +94,7 @@ public class StudentTest {
         Double average = student.getAverageExamScore();
 
         //then
-        System.out.println(average);
+        logger.log(Level.INFO, String.valueOf(average));
     }
     @Test
     public void testToString(){
@@ -104,7 +105,7 @@ public class StudentTest {
         String output = student.toString();
 
         //then
-        System.out.println(output);
+        logger.log(Level.INFO, output);;
     }
 
 
