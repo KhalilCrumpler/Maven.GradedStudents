@@ -77,8 +77,4 @@ public class Student {
     public String toString(){
         return "Student Name: " + this.firstName + " " + this.lastName + "\n" + "Average Score: " + getAverageExamScore() + "\nExam Scores: \n"  + getExamScores();
     }
-
-
-
-
 }

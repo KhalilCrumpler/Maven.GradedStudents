@@ -8,7 +8,7 @@ import java.util.List;
 import io.zipcoder.Student;
 
 public class Classroom {
-    public List<Student> students = new ArrayList<>();
+    public ArrayList<Student> students = new ArrayList<>();
 
     public Classroom() {
         students = new ArrayList<>(30);
@@ -24,14 +24,31 @@ public class Classroom {
         }
     }
 
-    public List<Student> getStudents(){
+    public Student[] getStudents(){
+        for(int i = 0; i< students.size(); i++){
+
+        }
         return students;
     }
 
-    public Double getAverageExamScore(){
-        double sum = 0.0;
-        return 1.0;
+    public double getAverageExamScore(){
+        double sum = 0;
+        double numTests = 0;
+        for(int i = 0; i < students.size(); i++){
+            for (int j = 0; j < students.size(); j++){
+            sum += students.get(i).examScores.get(j);
+            numTests++;
+        }
+            }
+        return sum/numTests;
     }
+
+    public void addStudent(Student student){
+        students.add(student);
+    }
+
+    
+
 
 
 }
