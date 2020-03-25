@@ -1,53 +1,147 @@
 package io.zipcoder;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.logging.Logger;
 
 import io.zipcoder.Student;
 
-public class Classroom {
-    public ArrayList<Student> students = new ArrayList<>();
-
+public class Classroom   {
+    private ArrayList<Student> students;
+    private static final Logger LOGGER = Logger.getLogger(Classroom.class.getName());
+    private int maxNumberOfStudents;
+    private TreeMap<String, ArrayList<Student>> gradeBook;
+    private ArrayList<Student> letterGradeA;
+    private ArrayList<Student> letterGradeB;
+    private ArrayList<Student> letterGradeC;
+    private ArrayList<Student> letterGradeD;
+    private ArrayList<Student> letterGradeF;
     public Classroom() {
-        students = new ArrayList<>(30);
+
+        this.students = new ArrayList<>(30);
     }
 
     public Classroom(int maxNumberOfStudents) {
+
         students = new ArrayList<>(maxNumberOfStudents);
     }
 
-    public Classroom(Student[] allStudents) {
-        for(int i = 0; i< allStudents.length; i++){
-            students.add(allStudents[i]);
-        }
+    public Classroom(ArrayList<Student> students) {
+        this.students = students;
+
     }
 
-    public Student[] getStudents(){
-        for(int i = 0; i< students.size(); i++){
+    public ArrayList<Student> getStudents(){
 
-        }
-        return students;
+        return this.students;
     }
 
-    public double getAverageExamScore(){
+    public double getAverageClassroomExamScore(){
         double sum = 0;
-        double numTests = 0;
-        for(int i = 0; i < students.size(); i++){
-            for (int j = 0; j < students.size(); j++){
-            sum += students.get(i).examScores.get(j);
-            numTests++;
+        for(Student index : students){
+            sum += index.getAverageExamScore();
         }
-            }
-        return sum/numTests;
+        double average = sum/students.size();
+        return average;
     }
 
     public void addStudent(Student student){
         students.add(student);
     }
 
-    
+    public void removeStudent(String firstName, String lastName){
+        for(Student a : this.students) {
+            if (a.getFirstName().equals(firstName) && a.getLastName().equals(lastName)) {
+                this.students.remove(a);
+            }
+        }
+    }
+
+    public void getStudentsByScore() {
+        Collections.sort(students);
+
+    }
+
+    public ArrayList<Student> checkIfStudentIsA(){
+        letterGradeA = new ArrayList<>();
+        for(Student student : students){
+            if(student.getAverageExamScore() >= 90){
+                letterGradeA.add(student);
+            }
+        }
+        return letterGradeA;
+    }
+
+    public ArrayList<Student> checkIfStudentIsB(){
+        letterGradeB = new ArrayList<>();
+        for(Student student : students){
+            if(student.getAverageExamScore() >= 71 && student.getAverageExamScore() < 89){
+                letterGradeB.add(student);
+            }
+        }
+        return letterGradeB;
+    }
+
+    public ArrayList<Student> checkIfStudentIsC(){
+        letterGradeC = new ArrayList<>();
+        for(Student student : students){
+            if(student.getAverageExamScore() >= 50 && student.getAverageExamScore() < 70){
+                letterGradeC.add(student);
+            }
+        }
+        return letterGradeC;
+    }
+
+    public ArrayList<Student> checkIfStudentIsD(){
+        letterGradeD = new ArrayList<>();
+        for(Student student : students){
+            if(student.getAverageExamScore() >= 11 && student.getAverageExamScore() < 49){
+                letterGradeD.add(student);
+            }
+        }
+        return letterGradeD;
+    }
+
+    public ArrayList<Student> checkIfStudentIsF(){
+        letterGradeF = new ArrayList<>();
+        for(Student student : students){
+            if(student.getAverageExamScore() < 11){
+                letterGradeF.add(student);
+            }
+        }
+        return letterGradeF;
+    }
+
+    public TreeMap<String, ArrayList<Student>> getGradeBook(){
+        gradeBook = new TreeMap<>();
+        gradeBook.put("A",letterGradeA);
+        gradeBook.put("B",letterGradeB);
+        gradeBook.put("C",letterGradeC);
+        gradeBook.put("D",letterGradeD);
+        gradeBook.put("F",letterGradeF);
+
+        return gradeBook;
+    }
+
+    public ArrayList<Student> getLetterGradeA() {
+        return letterGradeA;
+    }
+
+    public ArrayList<Student> getLetterGradeB() {
+        return letterGradeB;
+    }
+
+    public ArrayList<Student> getLetterGradeC() {
+        return letterGradeC;
+    }
+
+    public ArrayList<Student> getLetterGradeD() {
+        return letterGradeD;
+    }
+
+    public ArrayList<Student> getLetterGradeF() {
+        return letterGradeF;
+    }
+
 
 
 

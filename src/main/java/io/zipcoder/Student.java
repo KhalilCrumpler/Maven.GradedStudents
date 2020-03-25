@@ -1,17 +1,21 @@
 package io.zipcoder;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.logging.Logger;
 
-public class Student {
+public class Student implements Comparable<Student> {
     public String firstName;
     public String lastName;
-    public ArrayList<Double> examScores = new ArrayList<>();
+    ArrayList<Double> examScores;
+    private static final Logger LOGGER = Logger.getLogger(Student.class.getName());
 
     public Student(String firstName, String lastName, Double[] testScores){
         this.firstName = firstName;
         this.lastName = lastName;
-        for(int i = 0; i< testScores.length; i++) {
-            this.examScores.add(testScores[i]);
+        this.examScores = new ArrayList<>();
+        for(Double score : testScores){
+            examScores.add(score);
         }
     }
     public Student(String firstName){
@@ -65,16 +69,32 @@ public class Student {
         this.examScores.add(examScore);
     }
 
-    public Double getAverageExamScore(){
+    public double getAverageExamScore(){
         int len = examScores.size();
-        Double sum = 0.0;
+        double sum = 0;
         for( double a : examScores){
             sum += a;
         }
-        return sum/len;
+        double average = sum / examScores.size();
+        return (int)average;
     }
 
     public String toString(){
         return "Student Name: " + this.firstName + " " + this.lastName + "\n" + "Average Score: " + getAverageExamScore() + "\nExam Scores: \n"  + getExamScores();
     }
+
+    @Override
+    public int compareTo(Student otherStudent) {
+        int difference = (int) otherStudent.getAverageExamScore() - (int) this.getAverageExamScore();
+        if (difference == 0) {
+            if (this.getLastName().equals(otherStudent.getLastName())) {
+                return this.getFirstName().compareTo(otherStudent.getFirstName());
+            }
+            return this.getLastName().compareTo(otherStudent.getLastName());
+        } else {
+
+            return difference;
+        }
+    }
+
 }
